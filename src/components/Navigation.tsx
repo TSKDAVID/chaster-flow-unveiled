@@ -4,6 +4,7 @@ import { useLanguage } from '@/hooks/useLanguage';
 import { useTheme } from '@/hooks/useTheme';
 import { translations } from '@/i18n/translations';
 import { Button } from '@/components/ui/button';
+import { Sun, Moon, Menu, X, Globe } from 'lucide-react';
 
 interface NavigationProps {
   onSectionClick: (index: number) => void;
@@ -19,12 +20,12 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
   const sections = ['home', 'why', 'how', 'pricing', 'about', 'contact'] as const;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border animate-slide-up">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-gradient">
+            <div className="text-2xl font-bold text-gradient hover:scale-105 transition-transform duration-300 cursor-pointer">
               Chaster
             </div>
           </div>
@@ -36,10 +37,10 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
                 <button
                   key={section}
                   onClick={() => onSectionClick(index)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium nav-link ${
                     currentSection === index
-                      ? 'text-primary bg-primary/10'
-                      : 'text-muted-foreground hover:text-foreground hover:bg-accent'
+                      ? 'text-primary active'
+                      : 'text-muted-foreground hover:text-foreground'
                   }`}
                 >
                   {t.nav[section]}
@@ -52,15 +53,20 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground"
+              className="p-2 rounded-md text-muted-foreground hover:text-foreground theme-toggle"
             >
-              {theme === 'dark' ? '☀️' : '🌙'}
+              {theme === 'dark' ? (
+                <Sun className="w-5 h-5" />
+              ) : (
+                <Moon className="w-5 h-5" />
+              )}
             </button>
             <button
               onClick={() => changeLanguage(language === 'en' ? 'ka' : 'en')}
-              className="px-3 py-1 rounded-md text-sm font-medium border border-border hover:bg-accent"
+              className="px-3 py-1 text-sm font-medium lang-toggle flex items-center space-x-1"
             >
-              {language === 'en' ? 'KA' : 'EN'}
+              <Globe className="w-4 h-4" />
+              <span>{language === 'en' ? 'KA' : 'EN'}</span>
             </button>
           </div>
 
@@ -68,20 +74,20 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-muted-foreground hover:text-foreground p-2"
+              className="text-muted-foreground hover:text-foreground p-2 transition-all duration-300 hover:scale-110"
             >
-              <div className="w-6 h-6 flex flex-col justify-center space-y-1">
-                <div className={`w-full h-0.5 bg-current transform transition-transform ${isMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
-                <div className={`w-full h-0.5 bg-current transition-opacity ${isMenuOpen ? 'opacity-0' : ''}`} />
-                <div className={`w-full h-0.5 bg-current transform transition-transform ${isMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
-              </div>
+              {isMenuOpen ? (
+                <X className="w-6 h-6" />
+              ) : (
+                <Menu className="w-6 h-6" />
+              )}
             </button>
           </div>
         </div>
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="md:hidden">
+          <div className="md:hidden animate-fade-up">
             <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3 bg-background border-t border-border">
               {sections.map((section, index) => (
                 <button
@@ -90,7 +96,7 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
                     onSectionClick(index);
                     setIsMenuOpen(false);
                   }}
-                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-colors ${
+                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-all duration-300 ${
                     currentSection === index
                       ? 'text-primary bg-primary/10'
                       : 'text-muted-foreground hover:text-foreground hover:bg-accent'
@@ -102,15 +108,20 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
               <div className="flex items-center space-x-4 px-3 py-2">
                 <button
                   onClick={toggleTheme}
-                  className="p-2 rounded-md text-muted-foreground hover:text-foreground"
+                  className="p-2 rounded-md text-muted-foreground hover:text-foreground theme-toggle"
                 >
-                  {theme === 'dark' ? '☀️' : '🌙'}
+                  {theme === 'dark' ? (
+                    <Sun className="w-5 h-5" />
+                  ) : (
+                    <Moon className="w-5 h-5" />
+                  )}
                 </button>
                 <button
                   onClick={() => changeLanguage(language === 'en' ? 'ka' : 'en')}
-                  className="px-3 py-1 rounded-md text-sm font-medium border border-border hover:bg-accent"
+                  className="px-3 py-1 text-sm font-medium lang-toggle flex items-center space-x-1"
                 >
-                  {language === 'en' ? 'KA' : 'EN'}
+                  <Globe className="w-4 h-4" />
+                  <span>{language === 'en' ? 'KA' : 'EN'}</span>
                 </button>
               </div>
             </div>
