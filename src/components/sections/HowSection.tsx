@@ -70,17 +70,17 @@ const HowSection = () => {
                     </div>
                   )}
                   
-                  <div className="glass-card p-6 text-center h-full group-hover:scale-105 transition-all duration-300 hover:shadow-xl">
-                    <div className="relative mb-6">
-                      <div className="w-16 h-16 mx-auto bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110">
-                        <IconComponent className={`w-8 h-8 ${step.color} icon-float`} stroke={1.5} />
+                  <div className="glass-card p-8 text-center h-full min-h-[300px] group-hover:scale-105 transition-all duration-300 hover:shadow-xl border border-border/20 hover:border-border/40">
+                    <div className="relative mb-8">
+                      <div className="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110">
+                        <IconComponent className={`w-10 h-10 ${step.color} icon-float`} stroke={1.5} />
                       </div>
-                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold group-hover:scale-110 transition-transform duration-300">
+                      <div className="absolute -top-3 -right-3 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold group-hover:scale-110 transition-transform duration-300">
                         {step.number}
                       </div>
                     </div>
-                    <h3 className="text-lg font-semibold mb-3">{step.title}</h3>
-                    <p className="text-muted-foreground text-sm">{step.description}</p>
+                    <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
+                    <p className="text-muted-foreground">{step.description}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -91,7 +91,7 @@ const HowSection = () => {
         {/* Integration highlights */}
         <AnimatedSection animation="fade-up" delay={600}>
           <div className="mt-16 text-center">
-            <div className="inline-flex items-center space-x-8 glass-card rounded-full px-8 py-4 border border-border hover:shadow-xl transition-all duration-300">
+            <div className="inline-flex items-center space-x-8 glass-card rounded-full px-8 py-4 border border-border/20 hover:shadow-xl transition-all duration-300 hover:border-border/40">
               <div className="flex items-center space-x-2">
                 <span className="text-sm text-muted-foreground">Integrates with:</span>
               </div>

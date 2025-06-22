@@ -62,40 +62,103 @@ export const translations = {
       subtitle: 'Choose the plan that fits your business',
       monthly: 'Monthly',
       annually: 'Annually',
+      mostPopular: 'Most Popular',
+      conversationsPerMonth: 'conversations/month',
+      selectPlan: 'Select Plan',
+      viewPlans: 'View Plans',
+      buildPlan: 'Build Your Plan',
+      organizationPlans: 'Plans by Organization Type',
       starter: {
         name: 'Starter',
-        price: '$49',
+        price: 'Start at $10',
         description: 'Perfect for small businesses',
         features: [
-          '1,000 conversations/month',
+          '100 conversations/month',
           'Basic knowledge base',
           'Email support',
-          'WordPress integration'
+          'Simple data integration'
         ]
       },
-      professional: {
-        name: 'Professional',
-        price: '$149',
-        description: 'For growing businesses',
+      organization: {
+        name: 'Organization Plans',
+        price: 'From $29',
+        description: 'Tailored for your organization type',
         features: [
-          '10,000 conversations/month',
-          'Advanced analytics',
-          'Multilingual support',
-          'Custom integrations',
-          'Priority support'
+          'Custom conversation limits',
+          'Organization-specific features',
+          'Priority support',
+          'Advanced integrations',
+          'Multilingual support'
         ]
       },
-      enterprise: {
-        name: 'Enterprise',
+      custom: {
+        name: 'Build Your Own',
         price: 'Custom',
-        description: 'For large organizations',
+        description: 'Create a plan that fits exactly',
         features: [
           'Unlimited conversations',
-          'Advanced escalation rules',
+          'All features included',
           'White-label solution',
           'Dedicated account manager',
           'Custom AI training'
         ]
+      },
+      organizations: {
+        small: {
+          name: 'Small Business',
+          description: 'For small companies and startups',
+          features: [
+            'Basic customer support',
+            'Email integration',
+            'Standard response time',
+            'Basic analytics'
+          ]
+        },
+        university: {
+          name: 'University',
+          description: 'For educational institutions',
+          features: [
+            'Student support system',
+            'Course information',
+            'Academic calendar integration',
+            'Multilingual support',
+            'Department routing'
+          ]
+        },
+        ecommerce: {
+          name: 'E-commerce',
+          description: 'For online stores and retailers',
+          features: [
+            'Order tracking',
+            'Product recommendations',
+            'Inventory integration',
+            'Payment support',
+            'Return processing'
+          ]
+        },
+        ngo: {
+          name: 'NGO/Nonprofit',
+          description: 'For non-profit organizations',
+          features: [
+            'Volunteer coordination',
+            'Donation support',
+            'Event management',
+            'Community outreach',
+            'Special discount rates'
+          ]
+        },
+        enterprise: {
+          name: 'Enterprise',
+          description: 'For large corporations',
+          features: [
+            'Advanced workflow automation',
+            'Multi-department routing',
+            'Custom integrations',
+            'Advanced analytics',
+            'Dedicated support team',
+            'SLA guarantees'
+          ]
+        }
       },
       contact: 'Contact Sales'
     },
@@ -192,40 +255,103 @@ export const translations = {
       subtitle: 'აირჩიეთ გეგმა, რომელიც თქვენს ბიზნესს ეხება',
       monthly: 'ყოველთვიური',
       annually: 'წლიური',
+      mostPopular: 'ყველაზე პოპულარული',
+      conversationsPerMonth: 'საუბარი/თვეში',
+      selectPlan: 'აირჩიეთ გეგმა',
+      viewPlans: 'იხილეთ გეგმები',
+      buildPlan: 'შექმენით თქვენი გეგმა',
+      organizationPlans: 'გეგმები ორგანიზაციის ტიპის მიხედვით',
       starter: {
         name: 'სტარტერი',
-        price: '$49',
+        price: 'დაიწყეთ $10-დან',
         description: 'სრულყოფილი მცირე ბიზნესისთვის',
         features: [
-          '1,000 საუბარი/თვეში',
+          '100 საუბარი/თვეში',
           'ბაზისური ცოდნის ბაზა',
           'ელ-ფოსტით მხარდაჭერა',
-          'WordPress ინტეგრაცია'
+          'მარტივი მონაცემების ინტეგრაცია'
         ]
       },
-      professional: {
-        name: 'პროფესიონალური',
-        price: '$149',
-        description: 'მზარდი ბიზნესისთვის',
+      organization: {
+        name: 'ორგანიზაციული გეგმები',
+        price: '$29-დან',
+        description: 'მორგებული თქვენი ორგანიზაციის ტიპზე',
         features: [
-          '10,000 საუბარი/თვეში',
-          'გაღრმავებული ანალიტიკა',
-          'მრავალენოვანი მხარდაჭერა',
-          'ინდივიდუალური ინტეგრაციები',
-          'პრიორიტეტული მხარდაჭერა'
+          'ინდივიდუალური საუბრების ლიმიტები',
+          'ორგანიზაციისთვის სპეციფიკური ფუნქციები',
+          'პრიორიტეტული მხარდაჭერა',
+          'გაღრმავებული ინტეგრაციები',
+          'მრავალენოვანი მხარდაჭერა'
         ]
       },
-      enterprise: {
-        name: 'საწარმოო',
+      custom: {
+        name: 'შექმენით თქვენი',
         price: 'ინდივიდუალური',
-        description: 'დიდი ორგანიზაციებისთვის',
+        description: 'შექმენით გეგმა, რომელიც ზუსტად შეგეფერებათ',
         features: [
           'უსასრულო საუბრები',
-          'გაღრმავებული ესკალაციის წესები',
+          'ყველა ფუნქცია ჩართული',
           'White-label გადაწყვეტა',
           'ძირითადი ექაუნთ მენეჯერი',
           'ინდივიდუალური AI ტრენინგი'
         ]
+      },
+      organizations: {
+        small: {
+          name: 'მცირე ბიზნესი',
+          description: 'მცირე კომპანიებისა და სტარტაპებისთვის',
+          features: [
+            'ბაზისური მომხმარებელთა მხარდაჭერა',
+            'ელ-ფოსტის ინტეგრაცია',
+            'სტანდარტული პასუხის დრო',
+            'ბაზისური ანალიტიკა'
+          ]
+        },
+        university: {
+          name: 'უნივერსიტეტი',
+          description: 'საგანმანათლებლო დაწესებულებებისთვის',
+          features: [
+            'სტუდენტური მხარდაჭერის სისტემა',
+            'კურსების ინფორმაცია',
+            'აკადემიური კალენდრის ინტეგრაცია',
+            'მრავალენოვანი მხარდაჭერა',
+            'დეპარტამენტების მარშრუტიზაცია'
+          ]
+        },
+        ecommerce: {
+          name: 'ელექტრონული კომერცია',
+          description: 'ონლაინ მაღაზიებისა და მცოდნეებისთვის',
+          features: [
+            'შეკვეთების თვალყურისდევნება',
+            'პროდუქტის რეკომენდაციები',
+            'ინვენტარის ინტეგრაცია',
+            'გადახდის მხარდაჭერა',
+            'დაბრუნების დამუშავება'
+          ]
+        },
+        ngo: {
+          name: 'არასამთავრობო/უნდობლობა',
+          description: 'არაკომერციული ორგანიზაციებისთვის',
+          features: [
+            'მოხალისეების კოორდინაცია',
+            'შემოწირულობების მხარდაჭერა',
+            'ღონისძიებების მართვა',
+            'სათემო ურთიერთობები',
+            'სპეციალური ფასდაკლების განაკვეთები'
+          ]
+        },
+        enterprise: {
+          name: 'საწარმოო',
+          description: 'დიდი კორპორაციებისთვის',
+          features: [
+            'გაღრმავებული workflow ავტომატიზაცია',
+            'მრავალდეპარტამენტური მარშრუტიზაცია',
+            'ინდივიდუალური ინტეგრაციები',
+            'გაღრმავებული ანალიტიკა',
+            'ძირითადი მხარდაჭერის გუნდი',
+            'SLA გარანტიები'
+          ]
+        }
       },
       contact: 'დაუკავშირდით გაყიდვებს'
     },
