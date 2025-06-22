@@ -1,12 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useScrollSections } from '@/hooks/useScrollSections';
+import Navigation from '@/components/Navigation';
+import HeroSection from '@/components/sections/HeroSection';
+import WhySection from '@/components/sections/WhySection';
+import HowSection from '@/components/sections/HowSection';
+import PricingSection from '@/components/sections/PricingSection';
+import AboutSection from '@/components/sections/AboutSection';
+import ContactSection from '@/components/sections/ContactSection';
 
 const Index = () => {
+  const sectionIds = ['hero', 'why', 'how', 'pricing', 'about', 'contact'];
+  const { currentSection, scrollToSection } = useScrollSections(sectionIds);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-background text-foreground">
+      <Navigation 
+        onSectionClick={scrollToSection}
+        currentSection={currentSection}
+      />
+      
+      <main>
+        <HeroSection />
+        <WhySection />
+        <HowSection />
+        <PricingSection />
+        <AboutSection />
+        <ContactSection />
+      </main>
     </div>
   );
 };
