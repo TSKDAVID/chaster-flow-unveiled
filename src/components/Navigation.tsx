@@ -3,8 +3,7 @@ import { useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { useTheme } from '@/hooks/useTheme';
 import { translations } from '@/i18n/translations';
-import { Button } from '@/components/ui/button';
-import { Sun, Moon, Menu, X, Globe } from 'lucide-react';
+import { IconSun, IconMoon, IconMenu2, IconX, IconWorld } from '@tabler/icons-react';
 
 interface NavigationProps {
   onSectionClick: (index: number) => void;
@@ -37,7 +36,7 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
                 <button
                   key={section}
                   onClick={() => onSectionClick(index)}
-                  className={`px-3 py-2 rounded-md text-sm font-medium nav-link ${
+                  className={`px-3 py-2 rounded-md text-sm font-medium nav-link transition-all duration-300 hover:scale-105 ${
                     currentSection === index
                       ? 'text-primary active'
                       : 'text-muted-foreground hover:text-foreground'
@@ -53,20 +52,20 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={toggleTheme}
-              className="p-2 rounded-md text-muted-foreground hover:text-foreground theme-toggle"
+              className="p-2 rounded-md text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110 hover:bg-accent"
             >
               {theme === 'dark' ? (
-                <Sun className="w-5 h-5" />
+                <IconSun className="w-5 h-5 transition-transform duration-300" stroke={1.5} />
               ) : (
-                <Moon className="w-5 h-5" />
+                <IconMoon className="w-5 h-5 transition-transform duration-300" stroke={1.5} />
               )}
             </button>
             <button
               onClick={() => changeLanguage(language === 'en' ? 'ka' : 'en')}
-              className="px-3 py-1 text-sm font-medium lang-toggle flex items-center space-x-1"
+              className="px-3 py-1 text-sm font-medium border border-border hover:border-primary/50 rounded-md flex items-center space-x-1 transition-all duration-300 hover:scale-105 hover:bg-accent"
             >
-              <Globe className="w-4 h-4" />
-              <span>{language === 'en' ? 'KA' : 'EN'}</span>
+              <IconWorld className="w-4 h-4 transition-transform duration-300" stroke={1.5} />
+              <span className="transition-colors duration-300">{language === 'en' ? 'KA' : 'EN'}</span>
             </button>
           </div>
 
@@ -74,12 +73,12 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
           <div className="md:hidden">
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="text-muted-foreground hover:text-foreground p-2 transition-all duration-300 hover:scale-110"
+              className="text-muted-foreground hover:text-foreground p-2 transition-all duration-300 hover:scale-110 hover:bg-accent rounded-md"
             >
               {isMenuOpen ? (
-                <X className="w-6 h-6" />
+                <IconX className="w-6 h-6 transition-transform duration-300" stroke={1.5} />
               ) : (
-                <Menu className="w-6 h-6" />
+                <IconMenu2 className="w-6 h-6 transition-transform duration-300" stroke={1.5} />
               )}
             </button>
           </div>
@@ -96,7 +95,7 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
                     onSectionClick(index);
                     setIsMenuOpen(false);
                   }}
-                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-all duration-300 ${
+                  className={`block px-3 py-2 rounded-md text-base font-medium w-full text-left transition-all duration-300 hover:scale-[1.02] ${
                     currentSection === index
                       ? 'text-primary bg-primary/10'
                       : 'text-muted-foreground hover:text-foreground hover:bg-accent'
@@ -108,19 +107,19 @@ const Navigation = ({ onSectionClick, currentSection }: NavigationProps) => {
               <div className="flex items-center space-x-4 px-3 py-2">
                 <button
                   onClick={toggleTheme}
-                  className="p-2 rounded-md text-muted-foreground hover:text-foreground theme-toggle"
+                  className="p-2 rounded-md text-muted-foreground hover:text-foreground transition-all duration-300 hover:scale-110 hover:bg-accent"
                 >
                   {theme === 'dark' ? (
-                    <Sun className="w-5 h-5" />
+                    <IconSun className="w-5 h-5" stroke={1.5} />
                   ) : (
-                    <Moon className="w-5 h-5" />
+                    <IconMoon className="w-5 h-5" stroke={1.5} />
                   )}
                 </button>
                 <button
                   onClick={() => changeLanguage(language === 'en' ? 'ka' : 'en')}
-                  className="px-3 py-1 text-sm font-medium lang-toggle flex items-center space-x-1"
+                  className="px-3 py-1 text-sm font-medium border border-border hover:border-primary/50 rounded-md flex items-center space-x-1 transition-all duration-300 hover:scale-105"
                 >
-                  <Globe className="w-4 h-4" />
+                  <IconWorld className="w-4 h-4" stroke={1.5} />
                   <span>{language === 'en' ? 'KA' : 'EN'}</span>
                 </button>
               </div>
