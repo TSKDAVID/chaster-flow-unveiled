@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useLanguage } from '@/hooks/useLanguage';
 import { translations } from '@/i18n/translations';
 import { Button } from '@/components/ui/button';
-import { IconStar, IconBuilding, IconSettings, IconArrowRight } from '@tabler/icons-react';
+import { IconStar, IconBuilding, IconSettings, IconArrowRight, IconCheck } from '@tabler/icons-react';
 import AnimatedSection from '@/components/AnimatedSection';
 import OrganizationPlansModal from '@/components/OrganizationPlansModal';
 
