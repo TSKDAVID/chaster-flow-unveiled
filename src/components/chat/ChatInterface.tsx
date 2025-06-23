@@ -1,4 +1,3 @@
-
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -140,7 +139,7 @@ const ChatInterface = () => {
       />
       
       {/* Chat interface */}
-      <div className="fixed bottom-4 right-4 z-50 w-full max-w-sm md:w-96 h-[500px] md:h-[600px] bg-background border border-border rounded-lg shadow-2xl flex flex-col animate-slide-up">
+      <div className="fixed bottom-4 right-4 z-50 w-full max-w-sm md:w-96 h-[500px] md:h-[600px] bg-transparent border border-border rounded-lg shadow-2xl flex flex-col animate-slide-up">
         {/* Header */}
         <div className="flex items-center justify-between p-4 border-b border-border bg-primary/5 rounded-t-lg">
           <div className="flex items-center space-x-3">
@@ -163,7 +162,7 @@ const ChatInterface = () => {
         </div>
 
         {/* Messages */}
-        <ScrollArea className="flex-1 p-4" ref={scrollAreaRef}>
+        <ScrollArea className="flex-1 p-4 bg-transparent" ref={scrollAreaRef}>
           <div className="space-y-4">
             {messages.map((message) => (
               <div
@@ -197,7 +196,7 @@ const ChatInterface = () => {
 
         {/* Attachment menu */}
         {showAttachmentMenu && (
-          <div className="absolute bottom-20 left-4 right-4 bg-background border border-border rounded-lg shadow-lg p-2 animate-slide-up">
+          <div className="absolute bottom-20 left-4 right-4 bg-background border border-border rounded-lg shadow-lg p-2 animate-slide-up z-10">
             <div className="grid grid-cols-4 gap-2">
               {attachmentOptions.map((option, index) => (
                 <button
@@ -214,7 +213,7 @@ const ChatInterface = () => {
         )}
 
         {/* Input area */}
-        <div className="p-4 border-t border-border bg-background rounded-b-lg">
+        <div className="p-4 border-t border-border bg-background rounded-b-lg relative">
           <div className="flex items-end space-x-2">
             <div className="relative">
               <Button
