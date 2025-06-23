@@ -326,6 +326,15 @@ a:focus-visible {
     overflow-wrap: break-word;
     hyphens: auto;
   }
+
+  /* Chat interface mobile adjustments */
+  .fixed.bottom-4.right-4 {
+    @apply bottom-2 right-2 left-2;
+  }
+  
+  .fixed.bottom-4.right-4 .w-full {
+    @apply max-w-none;
+  }
 }
 
 /* Better responsive handling for very small screens */
@@ -344,6 +353,11 @@ a:focus-visible {
   * {
     word-wrap: break-word;
     overflow-wrap: break-word;
+  }
+  
+  /* Chat interface very small screen adjustments */
+  .fixed.bottom-4.right-4 {
+    @apply bottom-1 right-1 left-1;
   }
 }
 
@@ -396,4 +410,29 @@ a:focus-visible {
   overflow-wrap: break-word;
   word-break: break-word;
   hyphens: auto;
+}
+
+/* Chat interface specific styles */
+.chat-message {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Chat bubble improvements */
+@media (max-width: 768px) {
+  .chat-message {
+    max-width: 85%;
+  }
+}
+
+/* Chat input area mobile improvements */
+@media (max-width: 480px) {
+  .chat-input-area {
+    @apply p-2;
+  }
+  
+  .chat-input-area .flex {
+    @apply gap-1;
+  }
 }
