@@ -1,3 +1,4 @@
+
 export const translations = {
   en: {
     nav: {
@@ -16,8 +17,8 @@ export const translations = {
       watchDemo: 'Watch Demo Video',
       stats: {
         responseTime: 'Response Time',
-        languages: 'Languages',
-        uptime: 'Uptime'
+        languages: '50+ Languages',
+        uptime: '99.99% Uptime'
       }
     },
     why: {
@@ -196,6 +197,17 @@ export const translations = {
       newsletter: 'Subscribe to updates',
       send: 'Send Message',
       footer: 'Built with ❤️ in Tbilisi, Georgia'
+    },
+    chat: {
+      title: 'Support Chat',
+      status: 'Online now',
+      greeting: 'Hello! How can I help you today?',
+      response: 'Thank you for your message! Our team will get back to you soon.',
+      placeholder: 'Type your message...',
+      file: 'File',
+      photo: 'Photo',
+      camera: 'Camera',
+      voice: 'Voice'
     }
   },
   ka: {
@@ -215,8 +227,8 @@ export const translations = {
       watchDemo: 'ნახეთ დემო ვიდეო',
       stats: {
         responseTime: 'პასუხის დრო',
-        languages: 'ენები',
-        uptime: 'მუშაობის დრო'
+        languages: '50+ ენები',
+        uptime: '99.99% მუშაობის დრო'
       }
     },
     why: {
@@ -395,6 +407,17 @@ export const translations = {
       newsletter: 'გამოიწერეთ განახლებები',
       send: 'გაგზავნა',
       footer: 'შექმნილია ❤️-ით თბილისში, საქართველო'
+    },
+    chat: {
+      title: 'მხარდაჭერის ჩატი',
+      status: 'ახლა ონლაინზე',
+      greeting: 'გამარჯობა! როგორ შემიძლია დაგეხმაროთ?',
+      response: 'მადლობა თქვენი შეტყობინებისთვის! ჩვენი გუნდი მალე დაგიკავშირდებათ.',
+      placeholder: 'ჩაწერეთ თქვენი შეტყობინება...',
+      file: 'ფაილი',
+      photo: 'ფოტო',
+      camera: 'კამერა',
+      voice: 'ხმა'
     }
   }
 };

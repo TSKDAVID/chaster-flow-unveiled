@@ -1,3 +1,4 @@
+
 import React, { useState, useRef, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -13,6 +14,7 @@ import {
   IconPhoto
 } from '@tabler/icons-react';
 import { cn } from '@/lib/utils';
+import { useLanguage } from '@/hooks/useLanguage';
 
 interface Message {
   id: string;
@@ -23,11 +25,12 @@ interface Message {
 }
 
 const ChatInterface = () => {
+  const { t } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: 'Hello! How can I help you today?',
+      text: t.chat?.greeting || 'Hello! How can I help you today?',
       sender: 'bot',
       timestamp: new Date(),
       type: 'text'
@@ -39,6 +42,7 @@ const ChatInterface = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const attachmentMenuRef = useRef<HTMLDivElement>(null);
 
   // Auto-scroll to bottom when messages update
   const scrollToBottom = () => {
@@ -48,6 +52,23 @@ const ChatInterface = () => {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Handle click outside for attachment menu
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (attachmentMenuRef.current && !attachmentMenuRef.current.contains(event.target as Node)) {
+        setShowAttachmentMenu(false);
+      }
+    };
+
+    if (showAttachmentMenu) {
+      document.addEventListener('mousedown', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [showAttachmentMenu]);
 
   // Handle textarea auto-resize with line limit
   const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -88,7 +109,7 @@ const ChatInterface = () => {
     setTimeout(() => {
       const botResponse: Message = {
         id: (Date.now() + 1).toString(),
-        text: 'Thank you for your message! Our team will get back to you soon.',
+        text: t.chat?.response || 'Thank you for your message! Our team will get back to you soon.',
         sender: 'bot',
         timestamp: new Date(),
         type: 'text'
@@ -110,10 +131,10 @@ const ChatInterface = () => {
   };
 
   const attachmentOptions = [
-    { icon: IconPaperclip, label: 'File', action: handleFileAttachment },
-    { icon: IconPhoto, label: 'Photo', action: () => setShowAttachmentMenu(false) },
-    { icon: IconCamera, label: 'Camera', action: () => setShowAttachmentMenu(false) },
-    { icon: IconMicrophone, label: 'Voice', action: () => setShowAttachmentMenu(false) },
+    { icon: IconPaperclip, label: t.chat?.file || 'File', action: handleFileAttachment },
+    { icon: IconPhoto, label: t.chat?.photo || 'Photo', action: () => setShowAttachmentMenu(false) },
+    { icon: IconCamera, label: t.chat?.camera || 'Camera', action: () => setShowAttachmentMenu(false) },
+    { icon: IconMicrophone, label: t.chat?.voice || 'Voice', action: () => setShowAttachmentMenu(false) },
   ];
 
   if (!isOpen) {
@@ -147,8 +168,8 @@ const ChatInterface = () => {
               <IconMessageCircle className="w-5 h-5 text-primary" />
             </div>
             <div>
-              <h3 className="font-semibold text-foreground">Support Chat</h3>
-              <p className="text-xs text-muted-foreground">Online now</p>
+              <h3 className="font-semibold text-foreground">{t.chat?.title || 'Support Chat'}</h3>
+              <p className="text-xs text-muted-foreground">{t.chat?.status || 'Online now'}</p>
             </div>
           </div>
           <Button
@@ -196,7 +217,10 @@ const ChatInterface = () => {
 
         {/* Attachment menu */}
         {showAttachmentMenu && (
-          <div className="absolute bottom-20 left-4 right-4 bg-background border border-border rounded-lg shadow-lg p-2 animate-slide-up z-10">
+          <div 
+            ref={attachmentMenuRef}
+            className="absolute bottom-20 left-4 right-4 bg-background border border-border rounded-lg shadow-lg p-2 animate-slide-up z-10"
+          >
             <div className="grid grid-cols-4 gap-2">
               {attachmentOptions.map((option, index) => (
                 <button
@@ -236,7 +260,7 @@ const ChatInterface = () => {
                 value={inputValue}
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
-                placeholder="Type your message..."
+                placeholder={t.chat?.placeholder || 'Type your message...'}
                 className="w-full min-h-[40px] max-h-[80px] p-2 pr-12 text-sm bg-background border border-border rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent overflow-y-auto"
                 rows={1}
               />
