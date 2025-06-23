@@ -1,4 +1,3 @@
-
 export const translations = {
   en: {
     nav: {
@@ -10,10 +9,16 @@ export const translations = {
       contact: 'Contact'
     },
     hero: {
+      aiPowered: 'AI-Powered Customer Support',
       headline: 'Respond to customers in 10 seconds — powered by your data and your voice.',
       subheadline: 'Meet Chaster: the first Georgian-built multilingual AI chat assistant.',
       tryNow: 'Try Now',
-      watchDemo: 'Watch Demo Video'
+      watchDemo: 'Watch Demo Video',
+      stats: {
+        responseTime: 'Response Time',
+        languages: 'Languages',
+        uptime: 'Uptime'
+      }
     },
     why: {
       title: 'Why Chaster?',
@@ -203,10 +208,16 @@ export const translations = {
       contact: 'კონტაქტი'
     },
     hero: {
+      aiPowered: 'AI-ზე დაფუძნებული მომხმარებელთა მხარდაჭერა',
       headline: 'უპასუხეთ მომხმარებლებს 10 წამში — თქვენი მონაცემებითა და ხმით.',
       subheadline: 'გაიცანით ჩასტერი: პირველი ქართული მრავალენოვანი AI ჩატ ასისტენტი.',
       tryNow: 'სცადეთ ახლავე',
-      watchDemo: 'ნახეთ დემო ვიდეო'
+      watchDemo: 'ნახეთ დემო ვიდეო',
+      stats: {
+        responseTime: 'პასუხის დრო',
+        languages: 'ენები',
+        uptime: 'მუშაობის დრო'
+      }
     },
     why: {
       title: 'რატომ ჩასტერი?',
@@ -380,7 +391,7 @@ export const translations = {
       subtitle: 'მზად ხართ გარდაქმნათ თქვენი მომხმარებელთა მხარდაჭერა? ვისაუბროთ.',
       name: 'სრული სახელი',
       email: 'ელ-ფოსტის მისამართი',
-      message: 'გვითხარით თქვენი საჭიროებების შესახებ',
+      message: 'გვითხარით თქვენი საჭიროების შესახებ',
       newsletter: 'გამოიწერეთ განახლებები',
       send: 'გაგზავნა',
       footer: 'შექმნილია ❤️-ით თბილისში, საქართველო'
