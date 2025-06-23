@@ -37,13 +37,34 @@ const ChatInterface = () => {
   const [inputValue, setInputValue] = useState('');
   const [showAttachmentMenu, setShowAttachmentMenu] = useState(false);
   const scrollAreaRef = useRef<HTMLDivElement>(null);
+  const messagesEndRef = useRef<HTMLDivElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
+
+  // Auto-scroll to bottom when messages update
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   useEffect(() => {
-    if (scrollAreaRef.current) {
-      scrollAreaRef.current.scrollTop = scrollAreaRef.current.scrollHeight;
-    }
+    scrollToBottom();
   }, [messages]);
+
+  // Handle textarea auto-resize with line limit
+  const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const textarea = e.target;
+    setInputValue(textarea.value);
+    
+    // Reset height to auto to get the correct scrollHeight
+    textarea.style.height = 'auto';
+    
+    // Calculate number of lines
+    const lineHeight = 20; // Approximate line height
+    const maxHeight = lineHeight * 4; // 4 lines max
+    const newHeight = Math.min(textarea.scrollHeight, maxHeight);
+    
+    textarea.style.height = `${newHeight}px`;
+  };
 
   const handleSendMessage = () => {
     if (!inputValue.trim()) return;
@@ -58,6 +79,11 @@ const ChatInterface = () => {
 
     setMessages(prev => [...prev, newMessage]);
     setInputValue('');
+    
+    // Reset textarea height
+    if (textareaRef.current) {
+      textareaRef.current.style.height = 'auto';
+    }
 
     // Simulate bot response
     setTimeout(() => {
@@ -149,14 +175,14 @@ const ChatInterface = () => {
               >
                 <div
                   className={cn(
-                    "max-w-[80%] p-3 rounded-lg text-sm break-words",
+                    "p-3 rounded-lg text-sm break-words whitespace-pre-wrap",
                     message.sender === 'user'
-                      ? 'bg-primary text-primary-foreground ml-4'
-                      : 'bg-muted text-muted-foreground mr-4'
+                      ? 'bg-primary text-primary-foreground ml-4 max-w-[75%]'
+                      : 'bg-background/60 backdrop-blur-sm border border-border/20 text-foreground mr-2 max-w-[85%] shadow-sm'
                   )}
                 >
-                  <p className="whitespace-pre-wrap">{message.text}</p>
-                  <p className="text-xs opacity-70 mt-1">
+                  <p className="leading-relaxed">{message.text}</p>
+                  <p className="text-xs opacity-70 mt-2">
                     {message.timestamp.toLocaleTimeString([], { 
                       hour: '2-digit', 
                       minute: '2-digit' 
@@ -165,6 +191,7 @@ const ChatInterface = () => {
                 </div>
               </div>
             ))}
+            <div ref={messagesEndRef} />
           </div>
         </ScrollArea>
 
@@ -205,12 +232,14 @@ const ChatInterface = () => {
               </Button>
             </div>
             <div className="flex-1 relative">
-              <Input
+              <textarea
+                ref={textareaRef}
                 value={inputValue}
-                onChange={(e) => setInputValue(e.target.value)}
+                onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 placeholder="Type your message..."
-                className="pr-12 min-h-[40px] resize-none border-border focus:ring-primary"
+                className="w-full min-h-[40px] max-h-[80px] p-2 pr-12 text-sm bg-background border border-border rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent overflow-y-auto"
+                rows={1}
               />
             </div>
             <Button
