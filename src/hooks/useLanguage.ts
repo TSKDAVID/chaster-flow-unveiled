@@ -1,5 +1,6 @@
 
 import { useState, useEffect } from 'react';
+import { translations } from '../i18n/translations';
 
 export type Language = 'en' | 'ka';
 
@@ -18,5 +19,7 @@ export const useLanguage = () => {
     window.location.reload();
   };
 
-  return { language, changeLanguage };
+  const t = translations[language];
+
+  return { language, changeLanguage, t };
 };
