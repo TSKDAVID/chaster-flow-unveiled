@@ -1,4 +1,3 @@
-
 export const translations = {
   en: {
     nav: {
@@ -61,6 +60,13 @@ export const translations = {
       step4: {
         title: 'Instant Support',
         description: 'AI handles queries instantly, escalates complex cases with draft responses'
+      },
+      integrations: {
+        title: 'Integrates with:',
+        wordpress: 'WordPress',
+        shopify: 'Shopify',
+        customSites: 'Custom Sites',
+        apis: 'APIs'
       }
     },
     pricing: {
@@ -271,6 +277,13 @@ export const translations = {
       step4: {
         title: 'მყისიერი მხარდაჭერა',
         description: 'AI მყისიერად უმუშავებს შეკითხვებს, რთულ შემთხვევებს კი გადაამისამართებს პასუხის პროექტთან ერთად'
+      },
+      integrations: {
+        title: 'ინტეგრირდება:',
+        wordpress: 'WordPress',
+        shopify: 'Shopify', 
+        customSites: 'ინდივიდუალური საიტები',
+        apis: 'API-ები'
       }
     },
     pricing: {

@@ -1,13 +1,11 @@
 
 import { useLanguage } from '@/hooks/useLanguage';
-import { translations } from '@/i18n/translations';
 import { Button } from '@/components/ui/button';
 import { IconPlayerPlay, IconBolt, IconArrowRight } from '@tabler/icons-react';
 import AnimatedSection from '@/components/AnimatedSection';
 
 const HeroSection = () => {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { t } = useLanguage();
 
   // TODO: Integrate with backend endpoint /api/start-trial
   const handleTryNow = async () => {
@@ -31,7 +29,7 @@ const HeroSection = () => {
       </div>
 
       <div className="relative z-10 text-center max-w-4xl mx-auto px-4 w-full">
-        <AnimatedSection animation="fade-up" delay={200}>
+        <AnimatedSection animation="fade-up" delay={100}>
           <div className="flex items-center justify-center mb-4 sm:mb-6">
             <IconBolt className="w-6 h-6 sm:w-8 sm:h-8 text-primary mr-2 sm:mr-3 icon-float flex-shrink-0" stroke={1.5} />
             <span className="text-primary font-semibold text-sm sm:text-lg break-words">
@@ -40,19 +38,19 @@ const HeroSection = () => {
           </div>
         </AnimatedSection>
 
-        <AnimatedSection animation="fade-up" delay={400}>
-          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 sm:mb-6 px-2">
+        <AnimatedSection animation="fade-up" delay={200}>
+          <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4 sm:mb-6 px-2 break-words">
             {t.hero.headline}
           </h1>
         </AnimatedSection>
         
-        <AnimatedSection animation="fade-up" delay={600}>
-          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 px-4 max-w-3xl mx-auto">
+        <AnimatedSection animation="fade-up" delay={300}>
+          <p className="text-lg sm:text-xl md:text-2xl text-muted-foreground mb-6 sm:mb-8 px-4 max-w-3xl mx-auto break-words">
             {t.hero.subheadline}
           </p>
         </AnimatedSection>
 
-        <AnimatedSection animation="fade-up" delay={800}>
+        <AnimatedSection animation="fade-up" delay={400}>
           <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center px-4">
             <Button
               size="lg"
@@ -77,15 +75,15 @@ const HeroSection = () => {
 
         {/* Floating stats with improved loading and text wrapping */}
         <div className="mt-12 sm:mt-16 flex flex-col sm:flex-row justify-center items-center space-y-3 sm:space-y-0 sm:space-x-6 lg:space-x-12 px-4">
-          <AnimatedSection animation="scale-in" delay={1000}>
+          <AnimatedSection animation="scale-in" delay={500}>
             <div className="glass-card px-3 sm:px-6 py-2 sm:py-3 hover:scale-105 transition-all duration-300 min-w-0 w-full sm:w-auto">
               <div className="text-xl sm:text-2xl font-bold text-primary">10s</div>
-              <div className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
+              <div className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap break-words text-center">
                 {t.hero.stats.responseTime}
               </div>
             </div>
           </AnimatedSection>
-          <AnimatedSection animation="scale-in" delay={1200}>
+          <AnimatedSection animation="scale-in" delay={600}>
             <div className="glass-card px-3 sm:px-6 py-2 sm:py-3 hover:scale-105 transition-all duration-300 min-w-0 w-full sm:w-auto">
               <div className="text-xl sm:text-2xl font-bold text-primary">50+</div>
               <div className="text-xs sm:text-sm text-muted-foreground break-words text-center">
@@ -93,7 +91,7 @@ const HeroSection = () => {
               </div>
             </div>
           </AnimatedSection>
-          <AnimatedSection animation="scale-in" delay={1400}>
+          <AnimatedSection animation="scale-in" delay={700}>
             <div className="glass-card px-3 sm:px-6 py-2 sm:py-3 hover:scale-105 transition-all duration-300 min-w-0 w-full sm:w-auto">
               <div className="text-xl sm:text-2xl font-bold text-primary">99.9%</div>
               <div className="text-xs sm:text-sm text-muted-foreground break-words text-center">

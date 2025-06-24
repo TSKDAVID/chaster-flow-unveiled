@@ -1,12 +1,10 @@
 
 import { useLanguage } from '@/hooks/useLanguage';
-import { translations } from '@/i18n/translations';
 import { IconLink, IconUpload, IconBrain, IconBolt, IconArrowRight } from '@tabler/icons-react';
 import AnimatedSection from '@/components/AnimatedSection';
 
 const HowSection = () => {
-  const { language } = useLanguage();
-  const t = translations[language];
+  const { t } = useLanguage();
 
   const steps = [
     {
@@ -60,7 +58,7 @@ const HowSection = () => {
               <AnimatedSection 
                 key={index} 
                 animation="scale-in"
-                delay={200 + index * 100}
+                delay={100 + index * 50}
               >
                 <div className="relative group">
                   {/* Connection line */}
@@ -70,17 +68,17 @@ const HowSection = () => {
                     </div>
                   )}
                   
-                  <div className="glass-card p-8 text-center h-full min-h-[300px] group-hover:scale-105 transition-all duration-300 hover:shadow-xl border border-border/20 hover:border-border/40">
-                    <div className="relative mb-8">
-                      <div className="w-20 h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110">
-                        <IconComponent className={`w-10 h-10 ${step.color} icon-float`} stroke={1.5} />
+                  <div className="glass-card p-6 md:p-8 text-center h-full min-h-[280px] md:min-h-[300px] group-hover:scale-105 transition-all duration-300 hover:shadow-xl border border-border/20 hover:border-border/40">
+                    <div className="relative mb-6 md:mb-8">
+                      <div className="w-16 h-16 md:w-20 md:h-20 mx-auto bg-primary/10 rounded-full flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-300 group-hover:scale-110">
+                        <IconComponent className={`w-8 h-8 md:w-10 md:h-10 ${step.color} icon-float`} stroke={1.5} />
                       </div>
-                      <div className="absolute -top-3 -right-3 w-10 h-10 bg-primary rounded-full flex items-center justify-center text-white text-sm font-bold group-hover:scale-110 transition-transform duration-300">
+                      <div className="absolute -top-2 -right-2 md:-top-3 md:-right-3 w-8 h-8 md:w-10 md:h-10 bg-primary rounded-full flex items-center justify-center text-white text-xs md:text-sm font-bold group-hover:scale-110 transition-transform duration-300">
                         {step.number}
                       </div>
                     </div>
-                    <h3 className="text-xl font-semibold mb-4">{step.title}</h3>
-                    <p className="text-muted-foreground">{step.description}</p>
+                    <h3 className="text-lg md:text-xl font-semibold mb-3 md:mb-4 break-words">{step.title}</h3>
+                    <p className="text-sm md:text-base text-muted-foreground break-words">{step.description}</p>
                   </div>
                 </div>
               </AnimatedSection>
@@ -88,17 +86,29 @@ const HowSection = () => {
           })}
         </div>
 
-        {/* Integration highlights */}
-        <AnimatedSection animation="fade-up" delay={600}>
-          <div className="mt-16 text-center">
-            <div className="inline-flex items-center space-x-8 glass-card rounded-full px-8 py-4 border border-border/20 hover:shadow-xl transition-all duration-300 hover:border-border/40">
-              <div className="flex items-center space-x-2">
-                <span className="text-sm text-muted-foreground">Integrates with:</span>
+        {/* Integration highlights with improved mobile responsiveness */}
+        <AnimatedSection animation="fade-up" delay={300}>
+          <div className="mt-12 md:mt-16 text-center">
+            <div className="inline-flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 lg:gap-8 glass-card rounded-full px-4 py-3 md:px-8 md:py-4 border border-border/20 hover:shadow-xl transition-all duration-300 hover:border-border/40 max-w-full">
+              <div className="flex items-center">
+                <span className="text-xs sm:text-sm text-muted-foreground whitespace-nowrap">
+                  {t.how.integrations.title}
+                </span>
               </div>
-              <div className="text-sm font-medium hover:text-primary transition-colors cursor-pointer hover:scale-105 transform duration-300">WordPress</div>
-              <div className="text-sm font-medium hover:text-primary transition-colors cursor-pointer hover:scale-105 transform duration-300">Shopify</div>
-              <div className="text-sm font-medium hover:text-primary transition-colors cursor-pointer hover:scale-105 transform duration-300">Custom Sites</div>
-              <div className="text-sm font-medium hover:text-primary transition-colors cursor-pointer hover:scale-105 transform duration-300">APIs</div>
+              <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-4 lg:gap-6">
+                <div className="text-xs sm:text-sm font-medium hover:text-primary transition-colors cursor-pointer hover:scale-105 transform duration-300 px-2 py-1 rounded break-words">
+                  {t.how.integrations.wordpress}
+                </div>
+                <div className="text-xs sm:text-sm font-medium hover:text-primary transition-colors cursor-pointer hover:scale-105 transform duration-300 px-2 py-1 rounded break-words">
+                  {t.how.integrations.shopify}
+                </div>
+                <div className="text-xs sm:text-sm font-medium hover:text-primary transition-colors cursor-pointer hover:scale-105 transform duration-300 px-2 py-1 rounded break-words">
+                  {t.how.integrations.customSites}
+                </div>
+                <div className="text-xs sm:text-sm font-medium hover:text-primary transition-colors cursor-pointer hover:scale-105 transform duration-300 px-2 py-1 rounded break-words">
+                  {t.how.integrations.apis}
+                </div>
+              </div>
             </div>
           </div>
         </AnimatedSection>
