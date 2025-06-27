@@ -11,6 +11,13 @@ const HeroSection = () => {
   const handleTryNow = async () => {
     console.log('Try Now clicked - integrate with /api/start-trial');
   };
+<div style="width: 100%; max-width: 400px; height: 600px;">
+    <iframe 
+        src="https://preview--chaster-widget-scribe.lovable.app/" 
+        style="width: 100%; height: 100%; border: none; border-radius: 12px;"
+        title="Chaster Chat Widget">
+    </iframe>
+</div>
 
   // TODO: Integrate with backend endpoint /api/demo-video
   const handleWatchDemo = async () => {
