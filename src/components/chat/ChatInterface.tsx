@@ -142,7 +142,7 @@ const ChatInterface = () => {
       <div className="fixed bottom-4 right-4 z-50">
         <Button
           onClick={() => setIsOpen(true)}
-          className="w-14 h-14 rounded-full bg-primary hover:bg-primary/90 shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110"
+          className="btn-floating w-14 h-14 rounded-2xl shadow-2xl transition-all duration-400 hover:scale-110 hover:rotate-3"
           size="icon"
         >
           <IconMessageCircle className="w-6 h-6 text-white" />
@@ -160,12 +160,12 @@ const ChatInterface = () => {
       />
       
       {/* Chat interface */}
-      <div className="fixed bottom-4 right-4 z-50 w-full max-w-sm md:w-96 h-[500px] md:h-[600px] bg-transparent border border-border rounded-lg shadow-2xl flex flex-col animate-slide-up">
+      <div className="fixed bottom-4 right-4 z-50 w-full max-w-sm md:w-96 h-[500px] md:h-[600px] glass-card-elevated border border-border/30 rounded-xl shadow-2xl flex flex-col animate-slide-up">
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-border bg-primary/5 rounded-t-lg">
+        <div className="flex items-center justify-between p-4 border-b border-border/20 bg-gradient-to-r from-background-secondary/80 to-background-accent/80 backdrop-blur-xl rounded-t-xl">
           <div className="flex items-center space-x-3">
-            <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center">
-              <IconMessageCircle className="w-5 h-5 text-primary" />
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center shadow-lg">
+              <IconMessageCircle className="w-5 h-5 text-white" />
             </div>
             <div>
               <h3 className="font-semibold text-foreground">{t.chat?.title || 'Support Chat'}</h3>
@@ -183,7 +183,7 @@ const ChatInterface = () => {
         </div>
 
         {/* Messages */}
-        <ScrollArea className="flex-1 p-4 bg-transparent" ref={scrollAreaRef}>
+        <ScrollArea className="flex-1 p-4 bg-gradient-to-b from-background-secondary/20 to-background-accent/20 backdrop-blur-sm" ref={scrollAreaRef}>
           <div className="space-y-4">
             {messages.map((message) => (
               <div
@@ -195,10 +195,10 @@ const ChatInterface = () => {
               >
                 <div
                   className={cn(
-                    "p-3 rounded-lg text-sm break-words whitespace-pre-wrap",
+                    "p-3 rounded-xl text-sm break-words whitespace-pre-wrap transition-all duration-300",
                     message.sender === 'user'
-                      ? 'bg-primary text-primary-foreground ml-4 max-w-[75%]'
-                      : 'bg-background/60 backdrop-blur-sm border border-border/20 text-foreground mr-2 max-w-[85%] shadow-sm'
+                      ? 'bg-gradient-to-br from-primary to-accent text-white ml-4 max-w-[75%] shadow-lg hover:shadow-xl'
+                      : 'bg-transparent border-none text-foreground mr-2 max-w-[85%] text-shadow-sm'
                   )}
                 >
                   <p className="leading-relaxed">{message.text}</p>
@@ -219,14 +219,14 @@ const ChatInterface = () => {
         {showAttachmentMenu && (
           <div 
             ref={attachmentMenuRef}
-            className="absolute bottom-20 left-4 right-4 bg-background border border-border rounded-lg shadow-lg p-2 animate-slide-up z-10"
+            className="absolute bottom-20 left-4 right-4 glass-card-elevated border border-border/30 rounded-xl shadow-xl p-3 animate-slide-up z-10"
           >
             <div className="grid grid-cols-4 gap-2">
               {attachmentOptions.map((option, index) => (
                 <button
                   key={index}
                   onClick={option.action}
-                  className="flex flex-col items-center p-3 rounded-lg hover:bg-accent transition-colors"
+                  className="flex flex-col items-center p-3 rounded-xl hover:bg-gradient-to-br hover:from-primary/10 hover:to-accent/10 transition-all duration-300 hover:scale-105 hover:shadow-md"
                 >
                   <option.icon className="w-6 h-6 text-primary mb-1" />
                   <span className="text-xs text-muted-foreground">{option.label}</span>
@@ -237,18 +237,18 @@ const ChatInterface = () => {
         )}
 
         {/* Input area */}
-        <div className="p-4 border-t border-border bg-background rounded-b-lg relative">
+        <div className="p-4 border-t border-border/20 bg-gradient-to-r from-background-secondary/80 to-background-accent/80 backdrop-blur-xl rounded-b-xl relative">
           <div className="flex items-end space-x-2">
             <div className="relative">
               <Button
                 variant="ghost"
                 size="icon"
                 onClick={() => setShowAttachmentMenu(!showAttachmentMenu)}
-                className="hover:bg-accent"
+                className="hover:bg-gradient-to-br hover:from-primary/20 hover:to-accent/20 border border-border/30 hover:border-primary/40 rounded-xl transition-all duration-300 hover:shadow-md hover:scale-105"
               >
                 <IconPlus 
                   className={cn(
-                    "w-5 h-5 transition-transform duration-200",
+                    "w-5 h-5 transition-transform duration-300",
                     showAttachmentMenu && "rotate-45"
                   )} 
                 />
@@ -261,14 +261,15 @@ const ChatInterface = () => {
                 onChange={handleInputChange}
                 onKeyPress={handleKeyPress}
                 placeholder={t.chat?.placeholder || 'Type your message...'}
-                className="w-full min-h-[40px] max-h-[80px] p-2 pr-12 text-sm bg-background border border-border rounded-md resize-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent overflow-y-auto"
+                className="w-full min-h-[40px] max-h-[80px] p-3 pr-12 text-sm bg-background-secondary/60 backdrop-blur-sm border border-border/30 rounded-xl resize-none focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50 focus:bg-background-secondary/80 transition-all duration-300 overflow-hidden scrollbar-none"
                 rows={1}
+                style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
               />
             </div>
             <Button
               onClick={handleSendMessage}
               disabled={!inputValue.trim()}
-              className="bg-primary hover:bg-primary/90 text-white"
+              className="bg-gradient-to-br from-primary to-accent hover:from-primary-light hover:to-accent-light text-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 rounded-xl disabled:opacity-50 disabled:transform-none"
               size="icon"
             >
               <IconSend className="w-4 h-4" />

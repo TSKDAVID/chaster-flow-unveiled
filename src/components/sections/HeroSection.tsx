@@ -11,13 +11,6 @@ const HeroSection = () => {
   const handleTryNow = async () => {
     console.log('Try Now clicked - integrate with /api/start-trial');
   };
-<div style="width: 100%; max-width: 400px; height: 600px;">
-    <iframe 
-        src="https://preview--chaster-widget-scribe.lovable.app/" 
-        style="width: 100%; height: 100%; border: none; border-radius: 12px;"
-        title="Chaster Chat Widget">
-    </iframe>
-</div>
 
   // TODO: Integrate with backend endpoint /api/demo-video
   const handleWatchDemo = async () => {
@@ -25,7 +18,7 @@ const HeroSection = () => {
   };
 
   return (
-    <section id="hero" className="section-container gradient-bg relative overflow-hidden min-h-screen flex items-center pt-20 sm:pt-24">
+    <section id="hero" className="section-container gradient-bg-hero relative overflow-hidden min-h-screen flex items-center pt-20 sm:pt-24">
       {/* Enhanced animated background elements */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary/20 rounded-full blur-3xl animate-pulse" />
@@ -62,7 +55,7 @@ const HeroSection = () => {
             <Button
               size="lg"
               onClick={handleTryNow}
-              className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg group transition-all duration-300 hover:scale-105 hover:shadow-xl hover:shadow-primary/25"
+              className="btn-primary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl group transition-all duration-400"
             >
               {t.hero.tryNow}
               <IconArrowRight className="w-4 h-4 sm:w-5 sm:h-5 ml-2 transition-transform duration-300 group-hover:translate-x-1 flex-shrink-0" stroke={1.5} />
@@ -72,7 +65,7 @@ const HeroSection = () => {
               variant="outline"
               size="lg"
               onClick={handleWatchDemo}
-              className="btn-secondary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-lg group transition-all duration-300 hover:scale-105"
+              className="btn-secondary px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold rounded-xl group transition-all duration-400"
             >
               <IconPlayerPlay className="w-4 h-4 sm:w-5 sm:h-5 mr-2 transition-transform duration-300 group-hover:scale-110 flex-shrink-0" stroke={1.5} />
               {t.hero.watchDemo}
